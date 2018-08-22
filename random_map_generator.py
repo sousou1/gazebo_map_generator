@@ -10,8 +10,8 @@ map_array = []
 
 outfile_path = 'output_random.txt'
 
-make_map_x = 10
-make_map_y = 10
+make_map_x = 6
+make_map_y = 6
 
 map_cnt = 0
 
@@ -58,29 +58,21 @@ def map_re(map_array, before_dir , x, y):
   for direct in random_floor_type[1]:
     print(direct)
     if direct == 0:
-      try:
+      if y != make_map_y - 1:
         if map_array[y + 1][x][0] == 0:
           map_re(map_array, (direct + 2) % 4, x, y + 1)
-      except:
-        None
     if direct == 1:
-      try:
+      if x != 0:
         if map_array[y][x - 1][0] == 0:
           map_re(map_array, (direct + 2) % 4, x - 1, y)
-      except:
-        None
     if direct == 2:
-      try:
+      if y != 0:
         if map_array[y - 1][x][0] == 0:
           map_re(map_array, (direct + 2) % 4, x, y - 1)
-      except:
-        None
     if direct == 3:
-      try:
+      if x != make_map_x - 1:
         if map_array[y][x + 1][0] == 0:
           map_re(map_array, (direct + 2) % 4, x + 1, y)
-      except:
-        None
 
 map_array = make_zero_map(make_map_x, make_map_y)
 map_re(map_array, 1, int(make_map_x / 2), int(make_map_y / 2))
