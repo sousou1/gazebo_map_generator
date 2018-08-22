@@ -13,13 +13,11 @@ outfile_path = 'output_random.txt'
 make_map_x = 10
 make_map_y = 10
 
+map_cnt = 0
+
 def make_zero_map(x, y):
-  zero_array = []
-  result_array = []
-  for i in range(x):
-    zero_array.append([0, 0]) 
-  for i in range(y):
-    result_array.append(zero_array)
+  l = [0, 0] * x
+  result_array = [[[0] * 2 for i in range(x)] for m in range(y)]
   return result_array
 
 # あるx, yの値の床に対して、どっちに床が伸びているかをチェック、床が伸びている先が0なら床を追加し、追加した床に対してこの再帰をかける
@@ -30,6 +28,9 @@ def make_zero_map(x, y):
 def map_re(map_array, before_dir , x, y):
   # floor_type と　next_mapを配列で持つ
   # [[2,1] , [0 , 1, 2]のように
+  global map_cnt
+  map_cnt += 1
+
   floor_type_and_next_map = []
   floor_type_and_next_map.append([[1, 1], [(2 + before_dir) % 4]])
   floor_type_and_next_map.append([[1, 3], [(2 + before_dir) % 4]])  
@@ -51,6 +52,7 @@ def map_re(map_array, before_dir , x, y):
   random_floor_type = random.choice(floor_type_and_next_map)
   # ランダムに決定し、map_arrayを上書き
   map_array[y][x] = random_floor_type[0]
+  
 
   for direct in random_floor_type[1]:
     if direct == 0:
@@ -78,12 +80,50 @@ def map_re(map_array, before_dir , x, y):
       except:
         None
 
-  return map_array
+# はじめは交差点
+def start_map_re(map_array, before_dir , x, y):
+  # floor_type と　next_mapを配列で持つ
+  # [[2,1] , [0 , 1, 2]のように
+  result_array = map_array
 
+  floor_type_and_next_map = []
+  floor_type_and_next_map.append([[8, 0], [(0 + before_dir) % 4, (1 + before_dir) % 4, (2 + before_dir) % 4, 3]])
+
+  random_floor_type = random.choice(floor_type_and_next_map)
+  # ランダムに決定し、map_arrayを上書き
+  map_array[y][x] = random_floor_type[0]
+  
+
+  for direct in random_floor_type[1]:
+    if direct == 0:
+      try:
+        if map_array[y - 1][x][0] == 0:
+          map_array = map_re(map_array, (direct + 2) % 4, x, y - 1)
+      except:
+        None
+    if direct == 1:
+      try:
+        if map_array[y][x - 1][0] == 0:
+          map_array = map_re(map_array, (direct + 2) % 4, x - 1, y)
+      except:
+        None
+    if direct == 2:
+      try:
+        if map_array[y + 1][x][0] == 0:
+          map_array = map_re(map_array, (direct + 2) % 4, x, y + 1)
+      except:
+        None
+    if direct == 3:
+      try:
+        if map_array[y][x + 1][0] == 0:
+          map_array = map_re(map_array, (direct + 2) % 4, x + 1, y)
+      except:
+        None
 
 map_array = make_zero_map(make_map_x, make_map_y)
-map_array = map_re(map_array, 1, 3, 3)
+map_re(map_array, 1, 5, 5)
 print(map_array)
+print(map_cnt)
 
 
 
