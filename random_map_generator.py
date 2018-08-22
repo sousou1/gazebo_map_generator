@@ -32,51 +32,51 @@ def map_re(map_array, before_dir , x, y):
   map_cnt += 1
 
   floor_type_and_next_map = []
-  floor_type_and_next_map.append([[1, 1], [(2 + before_dir) % 4]])
-  floor_type_and_next_map.append([[1, 3], [(2 + before_dir) % 4]])  
-  floor_type_and_next_map.append([[2, 1], [(2 + before_dir) % 4]])
-  floor_type_and_next_map.append([[2, 3], [(2 + before_dir) % 4]])
-  floor_type_and_next_map.append([[3, 0], [(3 + before_dir) % 4]])
-  floor_type_and_next_map.append([[3, 1], [(1 + before_dir) % 4]])
-  floor_type_and_next_map.append([[4, 1], [(2 + before_dir) % 4]])
-  floor_type_and_next_map.append([[4, 3], [(2 + before_dir) % 4]]) 
-  floor_type_and_next_map.append([[5, 1], [(2 + before_dir) % 4]])
-  floor_type_and_next_map.append([[5, 3], [(2 + before_dir) % 4]]) 
-  floor_type_and_next_map.append([[6, 1], [(2 + before_dir) % 4]])
-  floor_type_and_next_map.append([[6, 3], [(2 + before_dir) % 4]]) 
-  floor_type_and_next_map.append([[7, 1], [(2 + before_dir) % 4, (3 + before_dir) % 4]])
-  floor_type_and_next_map.append([[7, 2], [(1 + before_dir) % 4, (3 + before_dir) % 4]]) 
-  floor_type_and_next_map.append([[7, 3], [(1 + before_dir) % 4, (2 + before_dir) % 4]]) 
-  floor_type_and_next_map.append([[8, 0], [(0 + before_dir) % 4, (1 + before_dir) % 4, (2 + before_dir) % 4, 3]])
+  floor_type_and_next_map.append([[1, (1 + before_dir) % 4], [(2 + before_dir) % 4]])
+  floor_type_and_next_map.append([[1, (3 + before_dir) % 4], [(2 + before_dir) % 4]])  
+  floor_type_and_next_map.append([[2, (1 + before_dir) % 4], [(2 + before_dir) % 4]])
+  floor_type_and_next_map.append([[2, (3 + before_dir) % 4], [(2 + before_dir) % 4]])
+  floor_type_and_next_map.append([[3, before_dir], [(3 + before_dir) % 4]])
+  floor_type_and_next_map.append([[3, (1 + before_dir) % 4], [(1 + before_dir) % 4]])
+  floor_type_and_next_map.append([[4, (1 + before_dir) % 4], [(2 + before_dir) % 4]])
+  floor_type_and_next_map.append([[4, (3 + before_dir) % 4], [(2 + before_dir) % 4]]) 
+  floor_type_and_next_map.append([[5, (1 + before_dir) % 4], [(2 + before_dir) % 4]])
+  floor_type_and_next_map.append([[5, (3 + before_dir) % 4], [(2 + before_dir) % 4]]) 
+  floor_type_and_next_map.append([[6, (1 + before_dir) % 4], [(2 + before_dir) % 4]])
+  floor_type_and_next_map.append([[6, (3 + before_dir) % 4], [(2 + before_dir) % 4]]) 
+  floor_type_and_next_map.append([[7, (1 + before_dir) % 4], [(2 + before_dir) % 4, (3 + before_dir) % 4]])
+  floor_type_and_next_map.append([[7, (2 + before_dir) % 4], [(1 + before_dir) % 4, (3 + before_dir) % 4]]) 
+  floor_type_and_next_map.append([[7, (3 + before_dir) % 4], [(1 + before_dir) % 4, (2 + before_dir) % 4]]) 
+  floor_type_and_next_map.append([[8, before_dir], [(0 + before_dir) % 4, (1 + before_dir) % 4, (2 + before_dir) % 4, 3]])
 
   random_floor_type = random.choice(floor_type_and_next_map)
   # ランダムに決定し、map_arrayを上書き
-  map_array[y][x] = random_floor_type[0]
-  
+  if map_array[y][x] == 0:
+    map_array[y][x] = random_floor_type[0]
 
   for direct in random_floor_type[1]:
     if direct == 0:
       try:
         if map_array[y - 1][x][0] == 0:
-          map_array = map_re(map_array, (direct + 2) % 4, x, y - 1)
+          map_re(map_array, (direct + 2) % 4, x, y - 1)
       except:
         None
     if direct == 1:
       try:
         if map_array[y][x - 1][0] == 0:
-          map_array = map_re(map_array, (direct + 2) % 4, x - 1, y)
+          map_re(map_array, (direct + 2) % 4, x - 1, y)
       except:
         None
     if direct == 2:
       try:
         if map_array[y + 1][x][0] == 0:
-          map_array = map_re(map_array, (direct + 2) % 4, x, y + 1)
+          map_re(map_array, (direct + 2) % 4, x, y + 1)
       except:
         None
     if direct == 3:
       try:
         if map_array[y][x + 1][0] == 0:
-          map_array = map_re(map_array, (direct + 2) % 4, x + 1, y)
+          map_re(map_array, (direct + 2) % 4, x + 1, y)
       except:
         None
 

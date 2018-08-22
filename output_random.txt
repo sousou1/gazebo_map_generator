@@ -1,6 +1,48 @@
 
-    <model name="road56">
-      <pose>5 0 0  0 0 0.00000</pose>
+    <model name="road18">
+      <pose>7 4 0  0 0 -3.14158</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road3.dae</uri>
+               <scale>0.5 0.5 0.5</scale>
+               </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="road19">
+      <pose>8 4 0  0 0 1.57079</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road6.dae</uri>
+               <scale>0.5 0.5 0.5</scale>
+               </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="road20">
+      <pose>9 4 0  0 0 1.57079</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road1.dae</uri>
+               <scale>0.5 0.5 0.5</scale>
+               </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="road28">
+      <pose>7 3 0  0 0 -3.14158</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -13,28 +55,70 @@
         </visual>
       </link>
     </model>
-    <model name="road57">
-      <pose>6 0 0  0 0 -3.14158</pose>
+    <model name="road38">
+      <pose>7 2 0  0 0 0.00000</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road7.dae</uri>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road5.dae</uri>
                <scale>0.5 0.5 0.5</scale>
                </mesh>
           </geometry>
         </visual>
       </link>
     </model>
-    <model name="road60">
-      <pose>9 0 0  0 0 0.00000</pose>
+    <model name="road48">
+      <pose>7 1 0  0 0 -3.14158</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road3.dae</uri>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road4.dae</uri>
+               <scale>0.5 0.5 0.5</scale>
+               </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="road56">
+      <pose>5 0 0  0 0 -1.57079</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road6.dae</uri>
+               <scale>0.5 0.5 0.5</scale>
+               </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="road57">
+      <pose>6 0 0  0 0 0.00000</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road8.dae</uri>
+               <scale>0.5 0.5 0.5</scale>
+               </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="road58">
+      <pose>7 0 0  0 0 0.00000</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road1.dae</uri>
                <scale>0.5 0.5 0.5</scale>
                </mesh>
           </geometry>
@@ -48,21 +132,21 @@
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road1.dae</uri>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road4.dae</uri>
                <scale>0.5 0.5 0.5</scale>
                </mesh>
           </geometry>
         </visual>
       </link>
     </model>
-    <model name="road70">
-      <pose>9 -1 0  0 0 -3.14158</pose>
+    <model name="road68">
+      <pose>7 -1 0  0 0 0.00000</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road5.dae</uri>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road2.dae</uri>
                <scale>0.5 0.5 0.5</scale>
                </mesh>
           </geometry>
@@ -76,21 +160,21 @@
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road7.dae</uri>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road1.dae</uri>
                <scale>0.5 0.5 0.5</scale>
                </mesh>
           </geometry>
         </visual>
       </link>
     </model>
-    <model name="road80">
-      <pose>9 -2 0  0 0 -3.14158</pose>
+    <model name="road78">
+      <pose>7 -2 0  0 0 0.00000</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road4.dae</uri>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road6.dae</uri>
                <scale>0.5 0.5 0.5</scale>
                </mesh>
           </geometry>
@@ -104,34 +188,6 @@
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road4.dae</uri>
-               <scale>0.5 0.5 0.5</scale>
-               </mesh>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-    <model name="road90">
-      <pose>9 -3 0  0 0 0.00000</pose>
-      <static>true</static>
-      <link name="body">
-        <visual name="visual">
-          <geometry>
-            <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road1.dae</uri>
-               <scale>0.5 0.5 0.5</scale>
-               </mesh>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-    <model name="road97">
-      <pose>6 -4 0  0 0 0.00000</pose>
-      <static>true</static>
-      <link name="body">
-        <visual name="visual">
-          <geometry>
-            <mesh>
                <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road7.dae</uri>
                <scale>0.5 0.5 0.5</scale>
                </mesh>
@@ -139,8 +195,8 @@
         </visual>
       </link>
     </model>
-    <model name="road98">
-      <pose>7 -4 0  0 0 0.00000</pose>
+    <model name="road88">
+      <pose>7 -3 0  0 0 -3.14158</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -153,22 +209,22 @@
         </visual>
       </link>
     </model>
-    <model name="road99">
-      <pose>8 -4 0  0 0 -3.14158</pose>
+    <model name="road97">
+      <pose>6 -4 0  0 0 1.57079</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road4.dae</uri>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road3.dae</uri>
                <scale>0.5 0.5 0.5</scale>
                </mesh>
           </geometry>
         </visual>
       </link>
     </model>
-    <model name="road100">
-      <pose>9 -4 0  0 0 -1.57079</pose>
+    <model name="road98">
+      <pose>7 -4 0  0 0 -3.14158</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
