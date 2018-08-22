@@ -21,23 +21,24 @@ y_count = 0
 road_count = 1
 for y in map_array:
 	x_count = 0
-	for x in y:
-		result_str += '''
-    <model name="road''' + str(road_count) + '''">
-      <pose>''' + str(x_count) + ' ' + str(y_middle - y_count) + ' ' + '0  0 0 ' + "{0:.5f}".format(1.57079 - x[1] * 1.57079) + '''</pose>
-      <static>true</static>
-      <link name="body">
-        <visual name="visual">
-          <geometry>
-            <mesh>
-               <uri>file:///home/''' + user_name + '/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road'
-		result_str += str(x[0]) + '''.dae</uri>
-               <scale>0.5 0.5 0.5</scale>
-               </mesh>
-          </geometry>
-        </visual>
-      </link>
-    </model>'''
+  if x[0] != 0:
+  	for x in y:
+  		result_str += '''
+      <model name="road''' + str(road_count) + '''">
+        <pose>''' + str(x_count) + ' ' + str(y_middle - y_count) + ' ' + '0  0 0 ' + "{0:.5f}".format(1.57079 - x[1] * 1.57079) + '''</pose>
+        <static>true</static>
+        <link name="body">
+          <visual name="visual">
+            <geometry>
+              <mesh>
+                 <uri>file:///home/''' + user_name + '/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/road'
+  		result_str += str(x[0]) + '''.dae</uri>
+                 <scale>0.5 0.5 0.5</scale>
+                 </mesh>
+            </geometry>
+          </visual>
+        </link>
+      </model>'''
 		road_count += 1
 		x_count += 1
 	y_count += 1
