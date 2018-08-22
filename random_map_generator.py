@@ -36,7 +36,7 @@ def map_re(map_array, before_dir , x, y):
   floor_type_and_next_map.append([[1, (3 + before_dir) % 4], [(2 + before_dir) % 4]])  
   floor_type_and_next_map.append([[2, (1 + before_dir) % 4], [(2 + before_dir) % 4]])
   floor_type_and_next_map.append([[2, (3 + before_dir) % 4], [(2 + before_dir) % 4]])
-  floor_type_and_next_map.append([[3, before_dir], [(3 + before_dir) % 4]])
+  floor_type_and_next_map.append([[3, (0 + before_dir) % 4], [(3 + before_dir) % 4]])
   floor_type_and_next_map.append([[3, (1 + before_dir) % 4], [(1 + before_dir) % 4]])
   floor_type_and_next_map.append([[4, (1 + before_dir) % 4], [(2 + before_dir) % 4]])
   floor_type_and_next_map.append([[4, (3 + before_dir) % 4], [(2 + before_dir) % 4]]) 
@@ -47,18 +47,20 @@ def map_re(map_array, before_dir , x, y):
   floor_type_and_next_map.append([[7, (1 + before_dir) % 4], [(2 + before_dir) % 4, (3 + before_dir) % 4]])
   floor_type_and_next_map.append([[7, (2 + before_dir) % 4], [(1 + before_dir) % 4, (3 + before_dir) % 4]]) 
   floor_type_and_next_map.append([[7, (3 + before_dir) % 4], [(1 + before_dir) % 4, (2 + before_dir) % 4]]) 
-  floor_type_and_next_map.append([[8, before_dir], [(0 + before_dir) % 4, (1 + before_dir) % 4, (2 + before_dir) % 4, 3]])
+  floor_type_and_next_map.append([[8, (0 + before_dir) % 4], [0, 1, 2, 3]])
 
   random_floor_type = random.choice(floor_type_and_next_map)
   # ランダムに決定し、map_arrayを上書き
   if map_array[y][x][0] == 0:
     map_array[y][x] = random_floor_type[0]
+  print(map_array)
 
   for direct in random_floor_type[1]:
+    print(direct)
     if direct == 0:
       try:
-        if map_array[y - 1][x][0] == 0:
-          map_re(map_array, (direct + 2) % 4, x, y - 1)
+        if map_array[y + 1][x][0] == 0:
+          map_re(map_array, (direct + 2) % 4, x, y + 1)
       except:
         None
     if direct == 1:
@@ -69,8 +71,8 @@ def map_re(map_array, before_dir , x, y):
         None
     if direct == 2:
       try:
-        if map_array[y + 1][x][0] == 0:
-          map_re(map_array, (direct + 2) % 4, x, y + 1)
+        if map_array[y - 1][x][0] == 0:
+          map_re(map_array, (direct + 2) % 4, x, y - 1)
       except:
         None
     if direct == 3:
@@ -81,8 +83,7 @@ def map_re(map_array, before_dir , x, y):
         None
 
 map_array = make_zero_map(make_map_x, make_map_y)
-map_re(map_array, 1, 5, 5)
-print(map_array)
+map_re(map_array, 1, int(make_map_x / 2), int(make_map_y / 2))
 print(map_cnt)
 
 
