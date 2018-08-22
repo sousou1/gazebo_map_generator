@@ -51,7 +51,7 @@ def map_re(map_array, before_dir , x, y):
 
   random_floor_type = random.choice(floor_type_and_next_map)
   # ランダムに決定し、map_arrayを上書き
-  if map_array[y][x] == 0:
+  if map_array[y][x][0] == 0:
     map_array[y][x] = random_floor_type[0]
 
   for direct in random_floor_type[1]:
@@ -77,46 +77,6 @@ def map_re(map_array, before_dir , x, y):
       try:
         if map_array[y][x + 1][0] == 0:
           map_re(map_array, (direct + 2) % 4, x + 1, y)
-      except:
-        None
-
-# はじめは交差点
-def start_map_re(map_array, before_dir , x, y):
-  # floor_type と　next_mapを配列で持つ
-  # [[2,1] , [0 , 1, 2]のように
-  result_array = map_array
-
-  floor_type_and_next_map = []
-  floor_type_and_next_map.append([[8, 0], [(0 + before_dir) % 4, (1 + before_dir) % 4, (2 + before_dir) % 4, 3]])
-
-  random_floor_type = random.choice(floor_type_and_next_map)
-  # ランダムに決定し、map_arrayを上書き
-  map_array[y][x] = random_floor_type[0]
-  
-
-  for direct in random_floor_type[1]:
-    if direct == 0:
-      try:
-        if map_array[y - 1][x][0] == 0:
-          map_array = map_re(map_array, (direct + 2) % 4, x, y - 1)
-      except:
-        None
-    if direct == 1:
-      try:
-        if map_array[y][x - 1][0] == 0:
-          map_array = map_re(map_array, (direct + 2) % 4, x - 1, y)
-      except:
-        None
-    if direct == 2:
-      try:
-        if map_array[y + 1][x][0] == 0:
-          map_array = map_re(map_array, (direct + 2) % 4, x, y + 1)
-      except:
-        None
-    if direct == 3:
-      try:
-        if map_array[y][x + 1][0] == 0:
-          map_array = map_re(map_array, (direct + 2) % 4, x + 1, y)
       except:
         None
 
