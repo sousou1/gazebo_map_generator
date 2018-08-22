@@ -9,7 +9,7 @@ map_array = [[[2, 1], [3, 2], [2, 3]],
 
 # 二次元で指定
 # [[2,1], [3,2], [4,1], [5,1]] [[3,2], [4,1], [0,0], [2,3]]
-# 一つ目でmapデータの種類(road1~8) 2つ目で回転角
+# 一つ目でmapデータの種類(road1~8) 2つ目で回転角(1がデータそのままで、1増えるごとに右回り)
 
 y_count = 0
 for y in map_array:
@@ -44,3 +44,8 @@ for y in map_array:
   y_count += 1
 
 print(result_str)
+
+outfile_path = 'output_map.txt'
+
+with open(outfile_path, mode='w') as f:
+  f.write(result_str)
