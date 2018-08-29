@@ -1,17 +1,16 @@
 import math
 import random
+import sys
 
 result_str = ''
 
 user_name = 'sou'
 
-map_array = []
+outfile_path = 'meiro.world'
 
-
-outfile_path = 'output_random.txt'
-
-make_map_x = 10
-make_map_y = 10
+args = sys.argv
+make_map_x = int(args[1])
+make_map_y = int(args[2])
 
 map_cnt = 0
 
@@ -74,13 +73,86 @@ def map_re(map_array, before_dir , x, y):
         if map_array[y][x + 1][0] == 0:
           map_re(map_array, (direct + 2) % 4, x + 1, y)
 
-map_array = make_zero_map(make_map_x, make_map_y)
-map_re(map_array, 1, int(make_map_x / 2), int(make_map_y / 2))
+while True:
+  map_array = []
+  map_array = make_zero_map(make_map_x, make_map_y)
+  map_re(map_array, 1, 0, 0)
+  if map_array[make_map_y - 1][make_map_x - 1][0] != 0:
+    break
 print(map_cnt)
 
 
 
+result_str += '''<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <transparency>1</transparency>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <include>
+      <uri>model://sun</uri>
+    </include>
 
+    <model name="floor">
+      <pose>-5 0 -0.4612  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/floor.dae</uri>
+               <scale>
+               '''
+result_str += str(10 + make_map_x) + ' ' + str(10 + make_map_y) + ''' 0.5</scale>
+               </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>'''
 
 
 
@@ -123,6 +195,63 @@ for y in map_array:
     x_count += 1
   y_count += 1
 
+result_str += '''
+    <light name='user_directional_light_0' type='directional'>
+      <pose frame=''>1.50806 1.18329 3 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0.1 0.1 -0.9</direction>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>1</cast_shadows>
+    </light>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+    <light name='user_directional_light_1' type='directional'>
+      <pose frame=''>1.50806 1.18329 3 0 -0 0</pose>
+      <diffuse>0.5 0.7 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0.1 0.1 -0.9</direction>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>1</cast_shadows>
+    </light>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>2.73267 0.822723 '''
+result_str += str(10 + make_map_x * 1.5)
+
+result_str += '''-1e-06 1.5538 1.56418</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>'''
 
 #print(result_str)
 with open(outfile_path, mode='w') as f:
