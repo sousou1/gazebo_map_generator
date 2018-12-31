@@ -144,7 +144,7 @@ result_str += '''<?xml version="1.0"?>
         <visual name="visual">
           <geometry>
             <mesh>
-               <uri>file:///home/sou/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/floor.dae</uri>
+               <uri>file:///home/''' + user_name + '''/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes/floor.dae</uri>
                <scale>
                '''
 result_str += str(10 + make_map_x) + ' ' + str(10 + make_map_y) + ''' 0.5</scale>
